@@ -49,7 +49,7 @@ else:
 
 def initial_print():
     print()
-    print("██████████████████████████████")
+    print("██████████████████████████████")  
     print("       PATCHBOOK PARSER       ")
     print("   Created by Spektro Audio   ")
     print("██████████████████████████████")
@@ -102,9 +102,9 @@ def regexLine(line):
     re_filter = re.compile(r"^([^\*]).+")  # Regex for "VOICE 1:"
     re_results = re_filter.search(line)
     try:
-        # For some reason the Regex filter was still detecting parameter declarations as voices,
+        # For some reason the Regex filter was still detecting parameter declarations as voices, 
         # so I'm also running the results through an if statement.
-        results = re_results.group().replace(":", "")
+        results = re_results.group().replace(":", "") 
         if "*" not in results and "-" not in results and "|" not in results:
             if debugMode: print("New voice found: " + results.upper())
             lastVoiceProcessed = results.upper()
@@ -136,7 +136,7 @@ def regexLine(line):
             parameters = line.split(": ")[1].split(" | ")
             for p in parameters:
                 p = p.split(" = ")
-                addParameter(module, p[0].strip().lower(), p[1].strip())
+                addParameter(module, p[0].strip().lower(), p[1].strip()) 
         except IndexError:
             if debugMode: print("No parameters found. Storing module as global variable...")
             lastModuleProcessed = module.replace(":", "").strip()
@@ -342,6 +342,7 @@ def graphviz():
             module_inputs += "<" + inp_formatted + "> " + inp.upper()
             if in_count < len(inputs.keys()):
                 module_inputs += " | "
+
 
         # Get all parameters:
         params = mainDict[module]["parameters"]
